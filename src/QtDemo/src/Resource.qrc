@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/close.png</file>
+        <file>icon/max_1.png</file>
+        <file>icon/max_2.png</file>
+        <file>icon/min.png</file>
+        <file>style/StyleSheet.qss</file>
+    </qresource>
+</RCC>
