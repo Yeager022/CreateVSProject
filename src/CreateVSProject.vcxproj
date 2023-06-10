@@ -101,6 +101,15 @@
   <ItemGroup>
     <QtRcc Include="Resource.qrc" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CreateVSProject.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Icons\TitleIcon.ico" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />

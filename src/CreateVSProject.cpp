@@ -1,5 +1,6 @@
 #include "CreateVSProject.h"
 #include <QMessageBox>
+#include <QIcon>
 #include <QDir>
 #include <QFileInfo>
 #include <QFile>
