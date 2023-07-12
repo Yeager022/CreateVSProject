@@ -1,4 +1,4 @@
-#include "QtDemo.h"
+ï»¿#include "QtDemo.h"
 
 #include <QMessageBox>
 #include <QMouseEvent>
@@ -11,7 +11,7 @@ QtDemo::QtDemo(QWidget* parent)
 {
 	ui.setupUi(this);
 
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	initial();
 }
 
@@ -26,28 +26,28 @@ QtDemo::~QtDemo()
 
 void QtDemo::initial()
 {
-	//ÉèÖÃÎÞ±ß¿ò´°¿Ú
+	//è®¾ç½®æ— è¾¹æ¡†çª—å£
 	setWindowFlags(Qt::FramelessWindowHint);
-	//¼ÓÔØÑùÊ½±í
+	//åŠ è½½æ ·å¼è¡¨
 	if (!loadStyleSheet(":style/StyleSheet.qss"))
 	{
-		//QMessageBox::information(this, QString(u8"ÌáÊ¾"), QString(u8"ÑùÊ½ÎÄ¼þ¼ÓÔØÊ§°Ü!"));
+		//QMessageBox::information(this, QString(u8"æç¤º"), QString(u8"æ ·å¼æ–‡ä»¶åŠ è½½å¤±è´¥!"));
 	}
-	//ÎªÍ¼±êÉèÖÃÍ¼Æ¬
+	//ä¸ºå›¾æ ‡è®¾ç½®å›¾ç‰‡
 	ui.pushButton_min->setIcon(QIcon(":/icon/min.png"));
 	ui.pushButton_max->setIcon(QIcon(":/icon/max_2.png"));
 	ui.pushButton_close->setIcon(QIcon(":/icon/close.png"));
-	//ÓÃÓÚ±ÜÃâË«»÷Ê±´°¿ÚÒÆ¶¯
+	//ç”¨äºŽé¿å…åŒå‡»æ—¶çª—å£ç§»åŠ¨
 	connect(&m_frameless.timer, &QTimer::timeout, this, [=] {
 		m_frameless.timer.stop();
 		});
 
-	//³õÊ¼»¯¶¯»­Ð§¹ûÖ¸Õë
+	//åˆå§‹åŒ–åŠ¨ç”»æ•ˆæžœæŒ‡é’ˆ
 	QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 	m_pAnimation = new QPropertyAnimation(this, "geometry");
-	m_pAnimation->setDuration(300);// ¶¯»­³ÖÐøÊ±¼ä
-	m_pAnimation->setEasingCurve(QEasingCurve::InOutCubic);//¶¯»­Ð§¹û
-	connect(m_pAnimation, &QPropertyAnimation::finished, this, &QtDemo::fullScreenSwitched);//¶¯»­Ð§¹ûÍê³Éºó´¦Àí
+	m_pAnimation->setDuration(300);// åŠ¨ç”»æŒç»­æ—¶é—´
+	m_pAnimation->setEasingCurve(QEasingCurve::InOutCubic);//åŠ¨ç”»æ•ˆæžœ
+	connect(m_pAnimation, &QPropertyAnimation::finished, this, &QtDemo::fullScreenSwitched);//åŠ¨ç”»æ•ˆæžœå®ŒæˆåŽå¤„ç†
 }
 
 bool QtDemo::loadStyleSheet(const QString& strPath)
@@ -65,7 +65,7 @@ void QtDemo::mousePressEvent(QMouseEvent* pEvent)
 {
 	if (pEvent->button() == Qt::LeftButton && pEvent->pos().y() <= ui.Layout_Title->geometry().bottomRight().y())
 	{
-		// ¼ÇÂ¼Êó±êÏà¶ÔÓÚ´°¿ÚµÄÎ»ÖÃ
+		// è®°å½•é¼ æ ‡ç›¸å¯¹äºŽçª—å£çš„ä½ç½®
 		m_frameless.dragPos = pEvent->globalPos() - frameGeometry().topLeft();
 		pEvent->accept();
 	}
@@ -79,7 +79,7 @@ void QtDemo::mouseMoveEvent(QMouseEvent* pEvent)
 		{
 			return;
 		}
-		// ÒÆ¶¯´°¿Ú
+		// ç§»åŠ¨çª—å£
 		move(pEvent->globalPos() - m_frameless.dragPos);
 		pEvent->accept();
 	}
@@ -104,22 +104,22 @@ void QtDemo::on_pushButton_max_clicked()
 {
 	if (isMaximized())
 	{
-		m_pAnimation->setStartValue(geometry());//´°¿Úµ±Ç°µÄÎ»ÖÃºÍ´óÐ¡
-		m_pAnimation->setEndValue(m_frameless.rect);//×î´ó»¯×´Ì¬»¹Ô­µ½ÆÕÍ¨×´Ì¬Ê±´°¿ÚÓ¦¸ÃÓÐµÄÎ»ÖÃºÍ´óÐ¡
+		m_pAnimation->setStartValue(geometry());//çª—å£å½“å‰çš„ä½ç½®å’Œå¤§å°
+		m_pAnimation->setEndValue(m_frameless.rect);//æœ€å¤§åŒ–çŠ¶æ€è¿˜åŽŸåˆ°æ™®é€šçŠ¶æ€æ—¶çª—å£åº”è¯¥æœ‰çš„ä½ç½®å’Œå¤§å°
 		m_pAnimation->start();
 	}
 	else
 	{
 		m_frameless.rect = geometry();
-		m_pAnimation->setStartValue(m_frameless.rect);//´°¿Úµ±Ç°µÄÎ»ÖÃ
-		m_pAnimation->setEndValue(QApplication::desktop()->availableGeometry());//´°¿Ú×î´ó»¯ºóµÄÎ»ÖÃ
+		m_pAnimation->setStartValue(m_frameless.rect);//çª—å£å½“å‰çš„ä½ç½®
+		m_pAnimation->setEndValue(QApplication::desktop()->availableGeometry());//çª—å£æœ€å¤§åŒ–åŽçš„ä½ç½®
 		m_pAnimation->start();
 	}
 }
 
 void QtDemo::on_pushButton_close_clicked()
 {
-	QMessageBox::StandardButton button = QMessageBox::question(this, QString(u8"¹Ø±Õ"), QString(u8"È·ÈÏ¹Ø±ÕÈí¼þ?"));
+	QMessageBox::StandardButton button = QMessageBox::question(this, QString(u8"å…³é—­"), QString(u8"ç¡®è®¤å…³é—­è½¯ä»¶?"));
 	if (button == QMessageBox::Yes)
 	{
 		close();

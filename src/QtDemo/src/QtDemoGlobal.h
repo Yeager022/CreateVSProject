@@ -1,16 +1,16 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QPoint>
 #include <QTimer>
 #include <QRect>
 
-//ÎŞ±ß¿ò´°¿ÚĞÅÏ¢
+//æ— è¾¹æ¡†çª—å£ä¿¡æ¯
 struct stFrameless
 {
-	QPoint dragPos;//Êó±êµã»÷µÄ×ø±ê,ÓÃÓÚÎŞ±ß¿ò´°¿ÚÍÏ¶¯
-	QTimer timer;//Ë«»÷ºó°ëÃëÄÚ²»ÄÜÒÆ¶¯
-	QRect rect;//ÓÃÓÚ¼ÇÂ¼´°¿ÚÎ»ÖÃ
-	bool bFullScreen;//ÊÇ·ñÈ«ÆÁ
+	QPoint dragPos;//é¼ æ ‡ç‚¹å‡»çš„åæ ‡,ç”¨äºæ— è¾¹æ¡†çª—å£æ‹–åŠ¨
+	QTimer timer;//åŒå‡»ååŠç§’å†…ä¸èƒ½ç§»åŠ¨
+	QRect rect;//ç”¨äºè®°å½•çª—å£ä½ç½®
+	bool bFullScreen;//æ˜¯å¦å…¨å±
 
 	stFrameless()
 	{

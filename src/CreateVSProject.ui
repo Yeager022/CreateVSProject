@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>353</width>
-    <height>148</height>
+    <width>364</width>
+    <height>176</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,9 +15,30 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QRadioButton" name="radioButton_Single">
+       <property name="text">
+        <string>单例模式</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButton_Common">
+       <property name="text">
+        <string>通用Qt工程</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label_ProjectName">
        <property name="text">
         <string>工程名称：</string>
        </property>
@@ -31,7 +52,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1">
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label_Base">
        <property name="text">
         <string>工程基类：</string>
        </property>

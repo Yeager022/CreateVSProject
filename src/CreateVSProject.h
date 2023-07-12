@@ -52,6 +52,12 @@ private:
 	void readDefaultPath();
 
 private slots:
+	//单例模式按钮
+	void SingleClicked(bool bChecked);
+
+	//通用Qt工程按钮
+	void CommonProjectClicked(bool bChecked);
+
 	//生成按钮按下
 	void CreatebuttonClicked();
 

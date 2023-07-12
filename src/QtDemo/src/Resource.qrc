@@ -1,4 +1,4 @@
-<RCC>
+﻿<RCC>
     <qresource prefix="/">
         <file>icon/close.png</file>
         <file>icon/max_1.png</file>

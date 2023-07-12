@@ -1,4 +1,4 @@
-#include "QtDemo.h"
+﻿#include "QtDemo.h"
 
 int main(int argc, char* argv[])
 {

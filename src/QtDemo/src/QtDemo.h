@@ -1,7 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QWidget>
 #include <QTimer>
+#include <QMutex>
 #include "ui_QtDemo.h"
 #include "QtDemoGlobal.h"
 
@@ -17,62 +18,62 @@ public:
 
 private:
 	/// <summary>
-	/// ³õÊ¼»¯
+	/// åˆå§‹åŒ–
 	/// </summary>
 	void initial();
 
 	/// <summary>
-	/// ¼ÓÔØÑùÊ½±í
+	/// åŠ è½½æ ·å¼è¡¨
 	/// </summary>
-	/// <param name="strPath">qssÑùÊ½ÎÄ¼şÂ·¾¶</param>
-	/// <returns>ÊÇ·ñ¼ÓÔØ³É¹¦</returns>
+	/// <param name="strPath">qssæ ·å¼æ–‡ä»¶è·¯å¾„</param>
+	/// <returns>æ˜¯å¦åŠ è½½æˆåŠŸ</returns>
 	bool loadStyleSheet(const QString& strPath);
 
 protected:
 	/// <summary>
-	/// Êó±ê°´ÏÂ
+	/// é¼ æ ‡æŒ‰ä¸‹
 	/// </summary>
-	/// <param name="pEvent">Êó±êÊÂ¼ş</param>
+	/// <param name="pEvent">é¼ æ ‡äº‹ä»¶</param>
 	void mousePressEvent(QMouseEvent* pEvent) override;
 
 	/// <summary>
-	/// Êó±êÒÆ¶¯
+	/// é¼ æ ‡ç§»åŠ¨
 	/// </summary>
-	/// <param name="pEvent">Êó±êÊÂ¼ş</param>
+	/// <param name="pEvent">é¼ æ ‡äº‹ä»¶</param>
 	void mouseMoveEvent(QMouseEvent* pEvent) override;
 
 	/// <summary>
-	/// Êó±êË«»÷
+	/// é¼ æ ‡åŒå‡»
 	/// </summary>
-	/// <param name="pEvent">Êó±êÊÂ¼ş</param>
+	/// <param name="pEvent">é¼ æ ‡äº‹ä»¶</param>
 	void mouseDoubleClickEvent(QMouseEvent* pEvent) override;
 
 private slots:
 	/// <summary>
-	/// ×îĞ¡»¯
+	/// æœ€å°åŒ–
 	/// </summary>
 	void on_pushButton_min_clicked();
 
 	/// <summary>
-	/// ×î´ó»¯
+	/// æœ€å¤§åŒ–
 	/// </summary>
 	void on_pushButton_max_clicked();
 
 	/// <summary>
-	/// ¹Ø±Õ´°¿Ú
+	/// å…³é—­çª—å£
 	/// </summary>
 	void on_pushButton_close_clicked();
 
 	/// <summary>
-	/// È«ÆÁÇĞ»»
+	/// å…¨å±åˆ‡æ¢
 	/// </summary>
 	void fullScreenSwitched();
 
 private:
 	Ui::QtDemo ui;
 
-	//ÎŞ±ß¿ò´°¿ÚĞÅÏ¢
+	//æ— è¾¹æ¡†çª—å£ä¿¡æ¯
 	stFrameless m_frameless;
-	//¶¯»­Ö¸Õë
+	//åŠ¨ç”»æŒ‡é’ˆ
 	QPropertyAnimation* m_pAnimation;
 };

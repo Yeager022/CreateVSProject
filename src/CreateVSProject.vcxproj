@@ -64,6 +64,18 @@
     <IntDir>$(SolutionDir)..\temp\$(Configuration)$(Platform)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)..\include</IncludePath>
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PostBuildEvent>
+      <Command>xcopy /e/i/y $(ProjectDir)InstanceDemo $(TargetDir)InstanceDemo
+xcopy /e/i/y $(ProjectDir)QtDemo $(TargetDir)QtDemo</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PostBuildEvent>
+      <Command>xcopy /e/i/y $(ProjectDir)InstanceDemo $(TargetDir)InstanceDemo
+xcopy /e/i/y $(ProjectDir)QtDemo $(TargetDir)QtDemo</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>

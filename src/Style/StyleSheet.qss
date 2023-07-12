@@ -1,0 +1,78 @@
+/* One Dark Pro Theme for QT */
+QWidget {
+    background-color: #282C34;
+    color: #ABB2BF;
+}
+
+QLineEdit {
+    background-color: #3E4451;
+    border: 1px solid #5C677D;
+    color: #F8F8F2;
+    padding: 2px;
+    selection-background-color: #5C677D;
+    selection-color: #F8F8F2;
+}
+
+QPushButton {
+    background-color: #61AFEF;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #98C4FF;
+    color: #FFFFFF;
+    padding: 3px;
+}
+
+QPushButton:hover {
+    background-color: #98C4FF;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #98C4FF;
+    color: #2E3440;
+}
+
+QComboBox {
+    background-color: #3E4451;
+    border: 1px solid #5C677D;
+    color: #F8F8F2;
+    padding: 2px;
+    selection-background-color: #5C677D;
+    selection-color: #F8F8F2;
+}
+
+QComboBox::item:selected {
+    background-color: #5C677D;
+    color: #F8F8F2;
+}
+
+QTextEdit {
+    background-color: #3E4451;
+    border: 1px solid #5C677D;
+    color: #F8F8F2;
+    padding: 2px;
+    selection-background-color: #5C677D;
+    selection-color: #F8F8F2;
+}
+
+QScrollBar:vertical {
+    background-color: #282C34;
+    border: none;
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #5C677D;
+    min-height: 30px;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    background-color: #282C34;
+    padding: 0 0 0 0px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: #282C34;
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}

@@ -29,7 +29,7 @@ void CreateVSProject::initial()
 	setWindowIcon(tiTleIcon);
 
 	//加载样式表
-	bool bRet = loadStyleSheet("./StyleSheet.qss");
+	bool bRet = loadStyleSheet(":/Style/StyleSheet.qss");
 
 	//工程名称
 	ui.lineEdit_ProjectName->setText(u8"QtApplication");
@@ -57,6 +57,8 @@ void CreateVSProject::initial()
 			ui.lineEdit_Path->setText(m_strPath);
 		}
 		});
+	connect(ui.radioButton_Single, &QRadioButton::clicked, this, &CreateVSProject::SingleClicked);
+	connect(ui.radioButton_Common, &QRadioButton::clicked, this, &CreateVSProject::CommonProjectClicked);
 }
 
 //加载样式表
@@ -183,21 +185,36 @@ bool CreateVSProject::createProject(QString& strInfo)
 		return false;
 	}
 
-	//先将本地的QtDemo拷贝到指定路径
-	if (!copyRecursively(QDir("./QtDemo").absolutePath(), strTargetPath))
+	if (ui.radioButton_Common->isChecked())
 	{
-		strInfo = QString(u8"拷贝文件到指定路径失败!");
-		return false;
-	}
+		//先将本地的QtDemo拷贝到指定路径
+		if (!copyRecursively(QDir("./QtDemo").absolutePath(), strTargetPath))
+		{
+			strInfo = QString(u8"拷贝文件到指定路径失败!");
+			return false;
+		}
 
-	//遍历文件夹所有文件修改基类
-	if (ui.comboBox_Base->currentText() != "QWidget")
+		//遍历文件夹所有文件修改基类
+		if (ui.comboBox_Base->currentText() != "QWidget")
+		{
+			recursiveUpdate(strTargetPath, "QWidget", ui.comboBox_Base->currentText());
+		}
+
+		//遍历文件夹中的所有文件
+		recursiveUpdate(strTargetPath, "QtDemo", ui.lineEdit_ProjectName->text());
+	}
+	else
 	{
-		recursiveUpdate(strTargetPath, "QWidget", ui.comboBox_Base->currentText());
-	}
+		//先将本地的QtDemo拷贝到指定路径
+		if (!copyRecursively(QDir("./InstanceDemo").absolutePath(), strTargetPath))
+		{
+			strInfo = QString(u8"拷贝文件到指定路径失败!");
+			return false;
+		}
 
-	//遍历文件夹中的所有文件
-	recursiveUpdate(strTargetPath, "QtDemo", ui.lineEdit_ProjectName->text());
+		//遍历文件夹中的所有文件
+		recursiveUpdate(strTargetPath, "InstanceDemo", ui.lineEdit_ProjectName->text());
+	}
 
 	return true;
 }
@@ -272,6 +289,28 @@ void CreateVSProject::closeEvent(QCloseEvent* pEvent)
 	file.write(m_strPath.toLocal8Bit());
 	file.close();
 	return;
+}
+
+//单例模式按钮
+void CreateVSProject::SingleClicked(bool bChecked)
+{
+	if (bChecked)
+	{
+		ui.label_ProjectName->setText(u8"单例名称:");
+		ui.label_Base->setVisible(!bChecked);
+		ui.comboBox_Base->setVisible(!bChecked);
+	}
+}
+
+//通用Qt工程按钮
+void CreateVSProject::CommonProjectClicked(bool bChecked)
+{
+	if (bChecked)
+	{
+		ui.label_ProjectName->setText(u8"工程名称:");
+		ui.label_Base->setVisible(bChecked);
+		ui.comboBox_Base->setVisible(bChecked);
+	}
 }
 
 //生成按钮按下
